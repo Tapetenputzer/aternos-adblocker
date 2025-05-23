@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Aternos Adblock Skipper by tapetenputzer
+// @name         Aternos Adblocker by tapetenputzer
 // @namespace    https://github.com/tapetenputzer/aternos-adblock-skipper
 // @version      1.0
 // @author       tapetenputzer
