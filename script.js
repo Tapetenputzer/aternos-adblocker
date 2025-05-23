@@ -3,7 +3,7 @@
 // @namespace    https://github.com/tapetenputzer/aternos-adblock-skipper
 // @version      1.0
 // @author       tapetenputzer
-// @description  Überspringt das 3-Sekunden-Warten bei Adblock-Hinweis auf aternos.org und blendet das rote Overlay direkt aus.
+// @description  Skips the 3-second cooldown triggered by adblock detection so you can access Aternos instantly.
 // @match        https://aternos.org/*
 // @match        https://*.aternos.org/*
 // @grant        none
