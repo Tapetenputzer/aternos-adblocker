@@ -1,0 +1,58 @@
+// ==UserScript==
+// @name         Aternos Adblock Skipper by tapetenputzer
+// @namespace    https://github.com/tapetenputzer/aternos-adblock-skipper
+// @version      1.0
+// @author       tapetenputzer
+// @description  Überspringt das 3-Sekunden-Warten bei Adblock-Hinweis auf aternos.org und blendet das rote Overlay direkt aus.
+// @match        https://aternos.org/*
+// @match        https://*.aternos.org/*
+// @grant        none
+// @run-at       document-start
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    const observer = new MutationObserver(mutations => {
+        for (const m of mutations) {
+            for (const node of m.addedNodes) {
+                if (node.tagName === 'SCRIPT') {
+                    const src = node.src || '';
+                    if (src.startsWith('data:text/javascript;base64') || node.innerHTML.includes('base64')) {
+                        node.remove();
+                    }
+                }
+            }
+        }
+    });
+    observer.observe(document, { childList: true, subtree: true });
+
+    function skipAdblock() {
+        const bodyDiv = document.querySelector('div.body#read-our-tos');
+        if (bodyDiv) {
+            bodyDiv.style.removeProperty('display');
+            bodyDiv.style.removeProperty('height');
+        }
+        const header = document.querySelector('header.header');
+        if (header) {
+            header.style.removeProperty('display');
+            header.style.removeProperty('height');
+        }
+        const startBtn = document.getElementById('start');
+        if (startBtn) {
+            startBtn._ready = true;
+        }
+        document.querySelectorAll('div').forEach(div => {
+            const s = div.getAttribute('style') || '';
+            if (s.includes('background: #F62451')) {
+                div.style.display = 'none';
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', skipAdblock);
+    } else {
+        skipAdblock();
+    }
+})();
