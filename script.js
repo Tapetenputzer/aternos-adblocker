@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Aternos Adblocker by tapetenputzer
-// @namespace    https://github.com/tapetenputzer/aternos-adblock-skipper
+// @namespace    https://github.com/tapetenputzer/aternos-adblocker
 // @version      1.0
 // @author       tapetenputzer
 // @description  Skips the 3-second cooldown triggered by adblock detection so you can access Aternos instantly.
